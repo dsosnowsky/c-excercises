@@ -1,16 +1,19 @@
+
 #include <stdio.h>
 
 void printMenu();
-int menuChoice(int choice);
+enum Options menuChoice(enum Options option);
+
+enum Options {
+    START = 1,
+    STOP,
+    STATUS,
+    EXIT
+};
 
 int main() {
 
-    enum Options {
-        START = 1,
-        STOP,
-        STATUS,
-        EXIT
-    };
+    printMenu();
 
     enum Options option = STOP;
 
@@ -30,31 +33,26 @@ void printMenu() {
     );
 }
 
-int menuChoice(enum Options option) {
+enum Options menuChoice(enum Options option) {
     switch(option) {
         case START:
             printf("Starting the program...\n");
             return START;
-            break;
 
         case STOP:
             printf("Stopping the program...\n");
             return STOP;
-            break;
 
         case STATUS:
             printf("Getting the status...\n");
             return STATUS;
-            break;
 
         case EXIT:
             printf("Exitting the program...\n");
             return EXIT;
-            break;
 
         default:
             printf("Unknown operation. Exiting the program...\n");
-            return 1;
             break;
     }
 }
